@@ -61,8 +61,13 @@ Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) an
 ## :checkered_flag: Starting ##
 
 ```bash
-# Set up a virtual env. into parent folder
 + FOR MAC:
+# Install Redis (background worker service, used with celery):
+brew update
+brew install redis
+
+# Set up a virtual env. into parent folder
+
 1. `python3 -m venv env`
 2. `source env/bin/active`
      > This command can be different for non-Linux computer
@@ -76,11 +81,19 @@ $ cd Credit-Approval-System
 # install dependencies
 $ pip install -r requirements.txt
 
-# runserver
+# runserver (In first terminal window)
 $ python manage.py runserver
+
+# Start Redis Server (In the second terminal):
+$ redis-server
+
+# Start Celery Worker (In the Third terminal):
+$ celery -A credit worker --loglevel=info
+
 
 # The server will initialize in the <http://127.0.0.1:8000/>
 ```
+
 
 
 
