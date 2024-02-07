@@ -13,17 +13,17 @@ from .utils import import_loan_from_excel, import_user_from_excel
 class Import(APIView):
 
     def get(self, request):
-        # import_user_from_excel()
-        # import_loan_from_excel()
+        import_user_from_excel.delay()
+        import_loan_from_excel.delay()
         return JsonResponse({"message":"Data imported successfully"}, status=200)
 
 
 class register(APIView):
     
     def post(self, request):
-        serializer = UserSerializer(data=request.data)
+        serializer = UserSerializer(data=request.data, partial=True)
         if serializer.is_valid():
-            serializer.save()
+            serializer.save(approved_limit = 36 * request.data['monthly_salary'])
             export_user_to_excel(User.objects.all())  # Export to Excel after saving
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

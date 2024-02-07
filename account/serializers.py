@@ -5,7 +5,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        exclude = ['approved_limit']
+        fields = '__all__'
 
 class LoanSerializer(serializers.ModelSerializer):
     user = UserSerializer(read_only=True)

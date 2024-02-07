@@ -1,5 +1,6 @@
 import os
 import openpyxl
+from celery import shared_task
 from .models import User, Loan
 from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
@@ -84,11 +85,11 @@ def credit_score(id):
         raise ValueError(f"Error calculating credit score: {str(e)}")
 
 #created a function import users & loan data from excel file in media folder and save to database
+@shared_task
 def import_loan_from_excel():
     file_path = os.path.join(settings.MEDIA_ROOT, 'loan_data.xlsx')
     workbook = openpyxl.load_workbook(file_path)
     sheet = workbook.active
-
     for row in sheet.iter_rows(min_row=2, values_only=True):
         loan = Loan(
             user_id=row[0],
@@ -102,11 +103,11 @@ def import_loan_from_excel():
         )
         loan.save()
 
+@shared_task
 def import_user_from_excel():
     file_path = os.path.join(settings.MEDIA_ROOT, 'customer_data.xlsx')
     workbook = openpyxl.load_workbook(file_path)
     sheet = workbook.active
-
     for row in sheet.iter_rows(min_row=2, values_only=True):
         user = User(
             first_name=row[1],
@@ -116,4 +117,8 @@ def import_user_from_excel():
             monthly_salary=row[5],
             approved_limit=row[6],
         )
-        user.save()
+        try:
+            user.save()
+        except Exception as e:
+            print(f"Error saving user: {str(e)}")
+            continue

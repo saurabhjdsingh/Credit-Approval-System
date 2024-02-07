@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'credit',
     'account'
 ]
 
@@ -72,6 +73,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'credit.wsgi.application'
 
+# settings.py
+CELERY_BROKER_URL = 'redis://localhost:6379/0'  # Using Redis as the message broker
+
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -82,7 +90,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators

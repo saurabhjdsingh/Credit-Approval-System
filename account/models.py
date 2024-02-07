@@ -12,10 +12,6 @@ class User(models.Model):
 
     def __str__(self):
         return self.first_name + " " + self.last_name
-    
-    def save(self, *args, **kwargs):
-        self.approved_limit = int(36) * self.monthly_salary
-        super(User, self).save(*args, **kwargs)
 
 class Loan(models.Model):
     user                = models.ForeignKey(User, on_delete=models.CASCADE)
