@@ -12,7 +12,7 @@
   <img alt="Github top language" src="https://img.shields.io/badge/language-Python-red">
   <img alt="Repository size" src="https://img.shields.io/badge/Repository_size-400KB-red">
   <img alt="License" src="https://img.shields.io/badge/License-MIT-red">
-  <img alt="Author" src="https://img.shields.io/badge/Author-Saurabhjdsingh-blue">
+  <a href="https://linkedin.com/in/saurabhjdsingh"><img alt="Author" src="https://img.shields.io/badge/Author-Saurabhjdsingh-blue"></a>
 </p>
 
 <p align="center">
@@ -52,16 +52,19 @@ The following tools were used in this project:
 - [Python](https://www.python.org/)
 - [Django](https://www.djangoproject.com/start/overview/)
 - [Rest Framework](https://www.django-rest-framework.org/)
+- [Celery](https://docs.celeryq.dev/en/stable/index.html)
 - [Postgres](https://www.postgresql.org/docs/)
 
 ## :white_check_mark: Requirements ##
 
-Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Python](https://www.python.org/) installed.
+Before starting :checkered_flag:, you need to have [Git](https://git-scm.com), [Python](https://www.python.org/) and [Redis](https://redis.io/) installed.
 
 ## :checkered_flag: Starting ##
 
 ```bash
-+ FOR MAC:
++ FOR MAC (These commands can be different for non-Linux computers):
+
+
 # Install Redis (background worker service, used with celery):
 brew update
 brew install redis
@@ -70,7 +73,6 @@ brew install redis
 
 1. `python3 -m venv env`
 2. `source env/bin/active`
-     > This command can be different for non-Linux computer
 
 # Clone this project (Kindly clone this repository into the parent folder)
 $ git clone https://github.com/saurabhjdsingh/Credit-Approval-System
@@ -101,8 +103,7 @@ $ celery -A credit worker --loglevel=info
 
 This project is under license from MIT. For more details, see the [LICENSE](LICENSE.md) file.
 
-
-Made with :heart: by <a href="https://github.com/saurabhjdsingh" target="_blank">Saurabh</a>
+Made with :heart: by <a href="https://linkedin.com/in/saurabhjdsingh" target="_blank">Saurabh</a>
 
 &#xa0;
 
