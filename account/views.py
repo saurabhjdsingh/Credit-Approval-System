@@ -23,7 +23,7 @@ class register(APIView):
     def post(self, request):
         serializer = UserSerializer(data=request.data, partial=True)
         if serializer.is_valid():
-            serializer.save(approved_limit = 36 * request.data['monthly_salary'])
+            serializer.save(approved_limit = int(36) * int(request.data['monthly_salary']))
             export_user_to_excel(User.objects.all())  # Export to Excel after saving
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -50,7 +50,7 @@ class check_eligibility(APIView):
         
         #calculate the monthly installment
         monthly_installment = request.data['loan_amount'] * interest_rate / (1 - (1 + interest_rate) ** (-request.data['tenure']))
-        return JsonResponse({"customer Id":request.data['customer_id'],"approval":True,"interest_rate":request.data['interest_rate'], "corrected_interest_rate":interest_rate, "tenure":request.data['tenure'], "monthly_installment":monthly_installment}, status=200)
+        return JsonResponse({"customer Id":request.data['customer_id'],"credit score":credit_score_val,"approval":True,"interest_rate":request.data['interest_rate'], "corrected_interest_rate":interest_rate, "tenure":request.data['tenure'], "monthly_installment":monthly_installment}, status=200)
     
 
 class create_loan(APIView):

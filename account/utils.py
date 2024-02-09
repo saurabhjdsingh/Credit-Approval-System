@@ -7,7 +7,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from datetime import datetime
 
 def export_user_to_excel(data):
-    file_path = os.path.join(settings.MEDIA_ROOT, 'user_details.xlsx')
+    file_path = os.path.join(settings.MEDIA_ROOT, 'customer_data.xlsx')
     workbook = openpyxl.Workbook()
     sheet = workbook.active
 
@@ -42,7 +42,6 @@ def credit_score(id):
                 end_date = datetime.now().date()
             # Calculate tenure from start_date to end_date
             tenure = (end_date - loan.start_date).days / 30
-            print(tenure)
 
         past_loans_paid_on_time = sum(loan.emi_paid for loan in user.loan_set.all())  # Accessing related Loan objects
 
