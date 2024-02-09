@@ -30,12 +30,12 @@
 ## :dart: About ##
 
 A backend app of credit-approval system, which renders data from Excel files and injest data into a database with the help of background workers. 
-It consists of different APIs which provide functionalities like:
-- register
-- check credit score
-- check eligibility
-- creat loan
-- make payment
+It consists of different APIs which provide functionalities like: (View screen-recording by clicking below)
+- [Import test data from xlsx files](https://drive.google.com/file/d/1SRRRXOyQecO2Anzwzu17vZwoys2Phj78/view?usp=sharing)
+- [register](https://drive.google.com/file/d/1VmS9ENNx9coD1c_23mNJPlclnfsJUodL/view?usp=sharing)
+- [check credit score & eligibility](https://drive.google.com/file/d/1dQ8EwBaUFBkGkxoVJuaACZNVA0ANKRLi/view?usp=sharing)
+- [create loan](https://drive.google.com/file/d/1_1RuSX_XW7da6jVcKreJtMDRCm2gkd2o/view?usp=sharing)
+- [View Loan by ID or view all loans of a customer](https://drive.google.com/file/d/1_tQ12auDGr-0x6-2OfQtTsvbq4h3rgbp/view?usp=sharing)
 - and more...
 
 ## :sparkles: Features ##
